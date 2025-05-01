@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ViewBox  from './components/PercentView'
+import PercentView from './components/PercentView'
 
   // type Address = {
   //   city: string,
@@ -50,20 +51,24 @@ import ViewBox  from './components/PercentView'
     )
   }
 
-
+  const changeColor = (num: number) => {
+    const color: number = num  * 120;
+    return (
+      `hsl(${color}, 100%, 35%)`
+    )
+  }
 
   const App = () => {
-    let cislo: number = 20
-    cislo -= 1
-
-  return (  //<> </> aby bylo možný víc komponentů
-    <> 
-      <ViewBox value={50} max={100} makeColor={(p) => `rgb(${p*2*100}, 255, 255)`}/>
-      <ViewBox value={50} max={200} makeColor={(p) => `rgb(${p*2*100}, 255, 255)`}/>
-      <ViewBox value={50} max={300} makeColor={(p) => `rgb(${p*2*100}, 255, 255)`}/>
-      <p>jnuhu</p>
-    </>
-  )
-}
+    let cislo: number = 33;
+    return (
+      <>
+        <PercentView value={cislo} percentvalue = {cislo} max={100} makeColor={changeColor}/>
+        <PercentView value={cislo} percentvalue = {cislo} max={200} makeColor={changeColor}/> 
+        <PercentView value={cislo} percentvalue = {cislo} max={300} makeColor={changeColor}/>
+        <PercentView value={cislo} percentvalue = {cislo} max={100} makeColor={changeColor}/>
+        <PercentView value={cislo} percentvalue = {cislo} max={50} makeColor={changeColor}/>
+      </>
+    )
+  }
 
 export default App
